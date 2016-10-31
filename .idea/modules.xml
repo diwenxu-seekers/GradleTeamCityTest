@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GradleTeamCityTest.iml" filepath="$PROJECT_DIR$/.idea/modules/GradleTeamCityTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GradleTeamCityTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/GradleTeamCityTest_main.iml" group="GradleTeamCityTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GradleTeamCityTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/GradleTeamCityTest_test.iml" group="GradleTeamCityTest" />
+    </modules>
+  </component>
+</project>
