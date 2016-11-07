@@ -1,18 +1,52 @@
 group 'GradleTeamCityTest'
-version '1.0-SNAPSHOT'
+version '1.0'
+def artifactId = "GradleTeamCityTest"
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    mavenCentral();
+    maven {
+        url "http://localhost:8081/nexus/content/groups/public"
+    }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-task prepareWrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+
+
+install {
+    repositories.mavenInstaller {
+        pom.version = "$project.version"
+        pom.artifactId = "$artifactId"
+        pom.groupId = "$project.group"
+    }
+}
+
+//上传到nexus
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://localhost:8081/nexus/content/repositories/thirdparty") {
+                authentication(userName: "admin", password: "admin123")
+            }
+            pom.version = "$project.version"
+            pom.artifactId = "$artifactId"
+            pom.groupId = "$project.group"
+        }
+    }
 }
